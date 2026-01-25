@@ -121,7 +121,7 @@ export function Home() {
                   <div className="relative overflow-hidden rounded-xl">
                     {/* Profile Image */}
                     <img
-                      src="\src\Assets\zaheer.jpeg"
+                      src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjH2wRGtw2cwFNWkLnjJWmuk-BjeOo1dpbUpI48xvsJahBGUk6TS_KEEguCto-8Cbszm17uGivHoZGabEoefEiX0PVgUPw5zHnskSxEVI04PYo-LSPHdGPGGj7MbUT7_nvGjqhfAeXSfC8QxrAx-k7hqEf3YVcBUtJx7wzsvZGCIAwksp78jQdc6jZwHfoX/s463/zaheer.jpeg"
                       alt="Zaheer Ahmed - Professional Profile"
                       className="w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 object-cover"
                     />
