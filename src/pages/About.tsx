@@ -104,7 +104,7 @@ export function About() {
                 ">
                   <div className="w-full h-full rounded-full overflow-hidden bg-slate-200">
                     <img
-                      src="https://github.com/ZaheerAhmed04/zaheerahmed.ite/blob/main/src/Assets/zaheer.jpeg"
+                      src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjH2wRGtw2cwFNWkLnjJWmuk-BjeOo1dpbUpI48xvsJahBGUk6TS_KEEguCto-8Cbszm17uGivHoZGabEoefEiX0PVgUPw5zHnskSxEVI04PYo-LSPHdGPGGj7MbUT7_nvGjqhfAeXSfC8QxrAx-k7hqEf3YVcBUtJx7wzsvZGCIAwksp78jQdc6jZwHfoX/s463/zaheer.jpeg"
                       alt="Zaheer Ahmed"
                       className="w-full h-full object-cover"
                       onError={(e) => {
