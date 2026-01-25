@@ -104,7 +104,7 @@ export function About() {
                 ">
                   <div className="w-full h-full rounded-full overflow-hidden bg-slate-200">
                     <img
-                      src="/src/Assets/zaheer.jpeg"
+                      src="https://github.com/ZaheerAhmed04/zaheerahmed.ite/blob/main/src/Assets/zaheer.jpeg"
                       alt="Zaheer Ahmed"
                       className="w-full h-full object-cover"
                       onError={(e) => {
