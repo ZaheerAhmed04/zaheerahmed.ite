@@ -3,6 +3,17 @@ import { ExternalLink, Github } from 'lucide-react';
 export function Projects() {
   const projects = [
    {
+  id: 1,
+  title: 'Digital Prayer Timetable',
+  date: '05-12-2025',
+  problem: 'Mosques and communities often require a clear and accessible way to display daily prayer schedules digitally without relying on expensive dedicated prayer clock hardware.',
+  solution: 'Built a web-based digital prayer timetable that displays daily prayer schedules in a clean digital interface with a live clock. The application can be easily deployed on any screen or browser and accessed online.',
+  techStack: ['HTML', 'CSS', 'JavaScript', 'Tailwind CSS', 'Netlify'],
+  status: 'Live',
+  liveUrl: 'https://digitalprayerclock.netlify.app/',
+  githubUrl: 'https://github.com/ZaheerAhmed04/Digital--Prayer-Timetable',
+}
+    {
   id: 1, 
   title: 'File Encrypter & Decrypter',
   date: '05-08-2025', 
