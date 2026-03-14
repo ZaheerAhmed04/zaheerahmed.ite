@@ -108,7 +108,7 @@ export function Navbar() {
               </NavLink>
             ))}
             <a
-              href="\Assets\Zaheer's CV.pdf"
+             href="\src\Assets\Zaheer's CV.pdf"
               className="block px-4 py-3 mt-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700 transition-colors text-center"
             >
               <span className="inline-flex items-center gap-2">
