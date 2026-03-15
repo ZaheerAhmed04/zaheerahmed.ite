@@ -122,11 +122,11 @@ const CSS = `
   @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Syne:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
   :root {
-    --bg-deep:        #07090e;
+    --bg-deep:      rgb(255, 255, 255);
     --bg-card:        #0c0f16;
     --border:         rgba(255,255,255,0.07);
     --border-hover:   rgba(255,255,255,0.13);
-    --text-primary:   #ede9df;
+    --text-primary:   #c39f46;
     --text-secondary: #74808f;
     --text-muted:     #363e4e;
     --gold:           #c9a84c;
@@ -375,7 +375,7 @@ const CSS = `
     transition: opacity 0.4s;
     background: radial-gradient(
       300px circle at var(--mx, 50%) var(--my, 50%),
-      rgba(201,168,76,0.09),
+      rgba(237, 234, 227, 0.09),
       transparent 65%
     );
   }
@@ -505,7 +505,7 @@ const CSS = `
     font-weight: 500;
     padding: 3px 10px;
     border-radius: 5px;
-    background: rgba(255,255,255,0.04);
+    background: rgba(236, 230, 230, 0.04);
     border: 1px solid rgba(255,255,255,0.08);
     color: var(--text-secondary);
     letter-spacing: 0.04em;
