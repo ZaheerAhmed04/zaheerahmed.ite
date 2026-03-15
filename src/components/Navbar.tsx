@@ -41,7 +41,6 @@ export function Navbar() {
 
             {/* Desktop Navigation */}
            <div className="hidden lg:flex items-center gap-1 px-1.5 py-1.5 
-                bg-white/70 backdrop-blur-md border border-white/20 
                 rounded-full shadow-[0_8px_32px_0_rgba(31,38,135,0.07)]">
   {/* Your NavLinks go here */}
 
