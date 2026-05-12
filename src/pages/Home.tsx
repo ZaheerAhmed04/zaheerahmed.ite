@@ -82,7 +82,7 @@ export function Home() {
                   <ArrowRight className="w-4 h-4" />
                 </Link>
                 <a
-                  href="src\Assets\Zaheer's CV.pdf"
+                  href="/Assets/Zaheer's CV.pdf"
                   className="inline-flex items-center gap-2 px-6 py-3 bg-white text-gray-900 border-2 border-gray-300 rounded-lg hover:border-blue-600 hover:text-blue-600 transition-all font-medium"
                 >
                   <FileText className="w-4 h-4" />
