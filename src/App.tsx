@@ -8,6 +8,7 @@ import { Experience } from './pages/Experience';
 import { Certifications } from './pages/Certifications';
 import { Learning } from './pages/Learning';
 import { Contact } from './pages/Contact';
+import { Services } from './pages/Services';
 
 export default function App() {
   return (
@@ -23,6 +24,7 @@ export default function App() {
             <Route path="/certifications" element={<Certifications />} />
             <Route path="/learning" element={<Learning />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/services" element={<Services />} />
           </Routes>
         </main>
         <Footer />
