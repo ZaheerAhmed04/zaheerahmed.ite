@@ -1,131 +1,104 @@
 import { NavLink } from 'react-router-dom';
-import { FileText, Menu, X } from 'lucide-react';
-import { useState } from 'react';
+import { Menu, X, Home, User, FolderGit, Briefcase, Award, GraduationCap, Mail, FileText, Sparkles } from 'lucide-react';
+import { useState, useEffect } from 'react';
 
 export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const navLinks = [
-    { to: '/', label: 'Home' },
-    { to: '/about', label: 'About' },
-    { to: '/projects', label: 'Projects' },
-    { to: '/experience', label: 'Experience' },
-    { to: '/certifications', label: 'Certifications' },
-    { to: '/learning', label: 'Learning' },
-    { to: '/contact', label: 'Contact' },
+    { to: '/', label: 'Home', icon: Home },
+    { to: '/about', label: 'About', icon: User },
+    { to: '/projects', label: 'Projects', icon: FolderGit },
+    { to: '/experience', label: 'Experience', icon: Briefcase },
+    { to: '/certifications', label: 'Certifications', icon: Award },
+    { to: '/learning', label: 'Learning', icon: GraduationCap },
+    { to: '/contact', label: 'Contact', icon: Mail },
   ];
-
-  const closeMobileMenu = () => {
-    setIsMobileMenuOpen(false);
-  };
 
   return (
     <>
-      <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm">
+      <nav className={`fixed top-0 left-0 right-0 w-full z-[9999] transition-all duration-300 ${
+        scrolled ? 'bg-white shadow-md py-2' : 'bg-white border-b border-gray-100 py-4'
+      }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
+          <div className="flex justify-between items-center h-12">
             {/* Logo */}
-            <NavLink
-              to="/"
-              className="flex items-center gap-2 group"
-              onClick={closeMobileMenu}
-            >
-              <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-700 rounded-lg flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow">
-                <span className="text-white font-bold text-lg">ZA</span>
+            <NavLink to="/" className="flex items-center gap-3" onClick={() => setIsMobileMenuOpen(false)}>
+              <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center text-white shadow-lg">
+                <Sparkles size={20} />
               </div>
-              <div className="hidden sm:block">
-                <span className="text-gray-900 font-semibold text-lg">Zaheer Ahmed</span>
-                <p className="text-xs text-gray-600">Web Dev & Security</p>
+              <div className="flex flex-col">
+                <span className="text-gray-900 font-bold text-lg leading-none">Zaheer Ahmed</span>
+                <span className="text-[10px] text-blue-600 font-bold uppercase tracking-tighter mt-1">Web & Security Engineer</span>
               </div>
             </NavLink>
 
-            {/* Desktop Navigation */}
-           <div className="hidden lg:flex items-center gap-1 px-1.5 py-1.5 
-                rounded-full shadow-[0_8px_32px_0_rgba(31,38,135,0.07)]">
-  {/* Your NavLinks go here */}
-
+            {/* Desktop Menu */}
+            <div className="hidden lg:flex items-center gap-2">
               {navLinks.map((link) => (
                 <NavLink
                   key={link.to}
                   to={link.to}
                   className={({ isActive }) =>
-                    `px-4 py-2 rounded-md text-sm font-medium transition-all ${
-                      isActive
-                        ? 'text-blue-600 bg-blue-50'
-                        : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50'
+                    `px-4 py-2 rounded-lg text-sm font-bold transition-all ${
+                      isActive ? 'text-blue-600 bg-blue-50' : 'text-gray-600 hover:text-blue-600 hover:bg-gray-50'
                     }`
                   }
                 >
                   {link.label}
                 </NavLink>
               ))}
-              <a
-                href="\src\Assets\Zaheer's CV.pdf"
-                className="ml-2 inline-flex items-center gap-2 px-5 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700 transition-all hover:shadow-md"
-              >
-                <FileText className="w-4 h-4" />
+              <a href="/Assets/Zaheer's CV.pdf" className="ml-4 px-5 py-2 bg-gray-900 text-white text-sm font-bold rounded-lg hover:bg-blue-600 transition-colors shadow-md">
                 Resume
               </a>
             </div>
 
-            {/* Mobile Menu Button */}
+            {/* Mobile Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden p-2 rounded-md text-gray-700 hover:bg-gray-100 transition-colors"
-              aria-label="Toggle menu"
+              className="lg:hidden p-2 rounded-lg bg-gray-100 text-gray-700"
             >
-              {isMobileMenuOpen ? (
-                <X className="w-6 h-6" />
-              ) : (
-                <Menu className="w-6 h-6" />
-              )}
+              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
         </div>
 
-        {/* Mobile Navigation */}
-        <div
-          className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-            isMobileMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
-          }`}
-        >
-          <div className="px-4 py-4 space-y-1 bg-gray-50 border-t border-gray-200">
-            {navLinks.map((link) => (
-              <NavLink
-                key={link.to}
-                to={link.to}
-                onClick={closeMobileMenu}
-                className={({ isActive }) =>
-                  `block px-4 py-3 rounded-md text-sm font-medium transition-colors ${
-                    isActive
-                      ? 'text-blue-600 bg-blue-50 border-l-4 border-blue-600'
-                      : 'text-gray-700 hover:bg-white hover:text-gray-900'
-                  }`
-                }
-              >
-                {link.label}
-              </NavLink>
-            ))}
-            <a
-             href="\src\Assets\Zaheer's CV.pdf"
-              className="block px-4 py-3 mt-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700 transition-colors text-center"
-            >
-              <span className="inline-flex items-center gap-2">
-                <FileText className="w-4 h-4" />
-                Download Resume
-              </span>
-            </a>
+        {/* Mobile Menu Overlay */}
+        {isMobileMenuOpen && (
+          <div className="lg:hidden fixed inset-0 top-[64px] z-[9998] bg-white border-t border-gray-100 overflow-y-auto">
+            <div className="p-4 space-y-2">
+              {navLinks.map((link) => (
+                <NavLink
+                  key={link.to}
+                  to={link.to}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className={({ isActive }) =>
+                    `flex items-center gap-4 px-4 py-4 rounded-xl text-lg font-bold ${
+                      isActive ? 'bg-blue-600 text-white shadow-lg' : 'text-gray-700 bg-gray-50'
+                    }`
+                  }
+                >
+                  <link.icon size={20} />
+                  {link.label}
+                </NavLink>
+              ))}
+              <a href="/Assets/Zaheer's CV.pdf" className="flex items-center justify-center gap-3 w-full py-4 bg-gray-900 text-white font-bold rounded-xl mt-4">
+                <FileText size={20} />
+                Download CV
+              </a>
+            </div>
           </div>
-        </div>
+        )}
       </nav>
-
-      {/* Mobile Menu Overlay */}
-      {isMobileMenuOpen && (
-        <div
-          className="lg:hidden fixed inset-0 bg-black/20 z-40"
-          onClick={closeMobileMenu}
-        />
-      )}
+      {/* Spacer */}
+      <div className="h-16 lg:h-20"></div>
     </>
   );
 }
