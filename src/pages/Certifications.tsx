@@ -4,46 +4,37 @@ export function Certifications() {
   const certifications = [
     {
       id: 1,
-      name: 'Cybersecurity Internship Certificate',
-      issuer: 'Cyber Gyan, Noida',
+      name: 'Cyber Security Internship',
+      issuer: 'Cyber Gyan (C-DAC Noida)',
       year: '2025',
-      description: 'Completed comprehensive internship covering network security, vulnerability assessment, and ethical hacking fundamentals.',
-      verificationUrl: 'src\Assets\cert3.pdf',
+      description: 'Completed a cybersecurity internship focused on anti-cryptojacking tool evaluation, threat detection, and security testing fundamentals.',
+      verificationUrl: '#',
       verified: true,
     },
     {
       id: 2,
-      name: 'Web Application Security',
-      issuer: 'OWASP Foundation',
-      year: '2024',
-      description: 'Certification focused on OWASP Top 10 vulnerabilities, secure coding practices, and web application penetration testing.',
+      name: 'Ethical Hacking & Cyber Security',
+      issuer: 'IIT Jammu, Techible I3C - IIT Jammu',
+      year: '2025',
+      description: 'Summer School 2025 training covering secure software practices, network safety, malware prevention, and hands-on cybersecurity workflows.',
       verificationUrl: '#',
       verified: true,
     },
     {
       id: 3,
-      name: 'Network Security Fundamentals',
-      issuer: 'Cisco Networking Academy',
-      year: '2024',
-      description: 'Foundational knowledge in network protocols, firewalls, intrusion detection systems, and network defense strategies.',
+      name: 'Common Internship Test',
+      issuer: 'Internship Studio',
+      year: '2025',
+      description: 'Completed internship readiness assessment demonstrating aptitude for professional internship opportunities.',
       verificationUrl: '#',
-      verified: false,
+      verified: true,
     },
     {
       id: 4,
-      name: 'Ethical Hacking Essentials',
-      issuer: 'EC-Council',
-      year: '2024',
-      description: 'Introduction to ethical hacking methodologies, reconnaissance, scanning, enumeration, and vulnerability analysis.',
-      verificationUrl: '#',
-      verified: false,
-    },
-    {
-      id: 5,
-      name: 'Full Stack Web Development',
-      issuer: 'freeCodeCamp',
-      year: '2024',
-      description: 'Comprehensive certification covering HTML, CSS, JavaScript, React, Node.js, and database management.',
+      name: 'Live Masterclass on Claude AI',
+      issuer: 'Skill Nation',
+      year: '2025',
+      description: 'Completed AI-focused masterclass exploring Claude AI use cases and practical productivity workflows.',
       verificationUrl: '#',
       verified: true,
     },
@@ -93,13 +84,17 @@ export function Certifications() {
                         In Progress
                       </span>
                     )}
-                    <a
-                      href={cert.verificationUrl}
-                      className="flex items-center gap-1 text-sm text-blue-600 hover:text-blue-700"
-                    >
-                      View Certificate
-                      <ExternalLink className="w-3 h-3" />
-                    </a>
+                    {cert.verificationUrl === '#' ? (
+                      <span className="text-sm text-gray-600">Listed in CV</span>
+                    ) : (
+                      <a
+                        href={cert.verificationUrl}
+                        className="flex items-center gap-1 text-sm text-blue-600 hover:text-blue-700"
+                      >
+                        View Certificate
+                        <ExternalLink className="w-3 h-3" />
+                      </a>
+                    )}
                   </div>
                 </div>
               </div>

@@ -4,8 +4,8 @@ import { FileText, ArrowRight, Code, Shield, Briefcase, Award, ChevronDown } fro
 export function Home() {
   const skills = {
     frontend: ['HTML', 'CSS', 'JavaScript', 'React', 'Tailwind CSS'],
-    backend: ['Node.js', 'Express', 'MongoDB', 'PostgreSQL', 'REST APIs'],
-    cybersecurity: ['Network Security', 'Ethical Hacking Basics', 'Vulnerability Assessment', 'Security Protocols', 'OWASP'],
+    backend: ['C++', 'Java OOP', 'C', 'Python Basics', 'PHP Basics', 'MySQL', 'SQL Queries'],
+    cybersecurity: ['Cybersecurity Basics', 'Ethical Hacking', 'Anti-Cryptojacking Analysis', 'Network Safety', 'Malware Prevention'],
   };
 
   const highlights = [
@@ -66,11 +66,11 @@ export function Home() {
               </h2>
               
               <p className="text-lg sm:text-xl text-gray-600 mb-4 max-w-xl mx-auto lg:mx-0">
-                Building secure, scalable, and maintainable web systems with a security-first approach.
+                B.Tech IT student building secure applications with foundations in C++, Java, C, SQL, and web technologies.
               </p>
               
               <p className="text-base text-gray-600 mb-8 max-w-xl mx-auto lg:mx-0">
-                B.Tech in Information Technology Engineering | Passionate about Application Security & Ethical Hacking
+                Hands-on cybersecurity exposure through CDAC Noida and IIT Jammu, with a strong interest in ethical hacking and secure development.
               </p>
               
               <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
@@ -214,7 +214,7 @@ export function Home() {
                 <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
                   <Code className="w-5 h-5 text-green-600" />
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900">Backend Development</h3>
+                <h3 className="text-xl font-semibold text-gray-900">Programming & Databases</h3>
               </div>
               <div className="flex flex-wrap gap-2">
                 {skills.backend.map((skill) => (

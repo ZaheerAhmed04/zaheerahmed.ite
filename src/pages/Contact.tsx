@@ -1,4 +1,4 @@
-import { Mail, Github, Linkedin, Send } from 'lucide-react';
+import { Mail, Github, Linkedin, MapPin, Phone, Languages, Send } from 'lucide-react';
 
 export function Contact() {
   return (
@@ -35,6 +35,34 @@ export function Contact() {
               </div>
 
               <div className="flex items-start gap-4">
+                <div className="flex-shrink-0 w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center">
+                  <Phone className="w-5 h-5 text-blue-600" />
+                </div>
+                <div>
+                  <p className="text-base font-medium text-gray-900 mb-1">Phone</p>
+                  <a href="tel:+919103078148" className="text-blue-600 hover:text-blue-700">
+                    +91 9103078148
+                  </a>
+                  <p className="text-gray-600 text-sm mt-1">
+                    Available for professional calls and internship discussions
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="flex-shrink-0 w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center">
+                  <MapPin className="w-5 h-5 text-blue-600" />
+                </div>
+                <div>
+                  <p className="text-base font-medium text-gray-900 mb-1">Location</p>
+                  <p className="text-gray-700">Poonch, Jammu & Kashmir, India</p>
+                  <p className="text-gray-600 text-sm mt-1">
+                    Open to remote, hybrid, and relevant on-site opportunities
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
                 <div className="flex-shrink-0 w-10 h-10 bg-gray-900 rounded-lg flex items-center justify-center">
                   <Github className="w-5 h-5 text-white" />
                 </div>
@@ -46,7 +74,7 @@ export function Contact() {
                     rel="noopener noreferrer"
                     className="text-blue-600 hover:text-blue-700"
                   >
-                    github.com/username
+                    github.com/ZaheerAhmed04
                   </a>
                   <p className="text-gray-600 text-sm mt-1">
                     View my code and projects
@@ -66,10 +94,23 @@ export function Contact() {
                     rel="noopener noreferrer"
                     className="text-blue-600 hover:text-blue-700"
                   >
-                    linkedin.com/in/username
+                    linkedin.com/in/zaheer-ahmed-4ab600371
                   </a>
                   <p className="text-gray-600 text-sm mt-1">
                     Connect professionally
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="flex-shrink-0 w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center">
+                  <Languages className="w-5 h-5 text-blue-600" />
+                </div>
+                <div>
+                  <p className="text-base font-medium text-gray-900 mb-1">Languages</p>
+                  <p className="text-gray-700">English, Urdu, Hindi, Pahari</p>
+                  <p className="text-gray-600 text-sm mt-1">
+                    Professional communication in English and Urdu; native proficiency in Pahari
                   </p>
                 </div>
               </div>

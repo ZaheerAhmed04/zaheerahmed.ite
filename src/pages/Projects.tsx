@@ -86,6 +86,28 @@ const projects = [
   {
     id: 7,
     num: "07",
+    title: "YesMandi Web Platform",
+    status: "Completed",
+    problem:
+      "School information and services often need a simple, accessible prototype before moving into a complete production website.",
+    solution:
+      "A static school website prototype built with HTML, CSS, and JavaScript to present institutional information in a clean web format.",
+    techStack: ["HTML", "CSS", "JavaScript"],
+  },
+  {
+    id: 8,
+    num: "08",
+    title: "Explore Poonch Website",
+    status: "Completed",
+    problem:
+      "Local culture and places in Poonch need a more accessible digital presence for visitors and learners.",
+    solution:
+      "A tourism-focused informative website showcasing Poonch's culture, places, and local identity through a simple web experience.",
+    techStack: ["HTML", "CSS", "JavaScript"],
+  },
+  {
+    id: 9,
+    num: "09",
     title: "ZaheerAhmed | Portfolio",
     status: "Planned",
     problem:
@@ -111,8 +133,8 @@ interface Project {
   problem: string;
   solution: string;
   techStack: string[];
-  liveUrl: string;
-  githubUrl: string;
+  liveUrl?: string;
+  githubUrl?: string;
 }
 
 /* ─────────────────────────────────────────
@@ -620,25 +642,33 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         </div>
 
         <div className="pj-card-footer">
-          <a
-            href={project.liveUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="pj-link primary"
-          >
-            <ExternalLink size={12} />
-            {project.status === "Planned" ? "Preview" : "Live Demo"}
-          </a>
-          <span className="pj-footer-dot" />
-          <a
-            href={project.githubUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="pj-link ghost"
-          >
-            <Github size={12} />
-            GitHub
-          </a>
+          {project.liveUrl ? (
+            <a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="pj-link primary"
+            >
+              <ExternalLink size={12} />
+              {project.status === "Planned" ? "Preview" : "Live Demo"}
+            </a>
+          ) : (
+            <span className="pj-link primary">Listed in CV</span>
+          )}
+          {project.githubUrl && (
+            <>
+              <span className="pj-footer-dot" />
+              <a
+                href={project.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="pj-link ghost"
+              >
+                <Github size={12} />
+                GitHub
+              </a>
+            </>
+          )}
         </div>
       </div>
     </div>

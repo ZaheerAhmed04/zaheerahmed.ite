@@ -8,15 +8,15 @@ export function Experience() {
       organization: 'Cyber Gyan (C-DAC Noida), Remote – Noida',
       duration: 'January 2025 - March 2025',
       responsibilities: [
-        ' Evaluated anti-crypto jacking tools to detect and prevent cybersecurity threats.',
-        ' Performed structured analysis of crypto mining detection tools.',
-        ' Gained exposure to real-world vulnerabilities and countermeasures.',
-        ' Enhanced skills in security testing and threat analysis.',
+        'Evaluated anti-cryptojacking tools to detect and prevent cybersecurity threats.',
+        'Performed structured analysis of crypto mining detection tools.',
+        'Gained exposure to real-world vulnerabilities and countermeasures.',
+        'Enhanced skills in security testing and threat analysis.',
       ],
     },
     {
       id: 2,
-      role: 'Ethical Hacking and Cybersecurity Intern',
+      role: 'Summer School Intern - Cybersecurity',
       organization: 'IIT Jammu – I3C Lab (Techible onsite)',
       duration: 'June 2025 - August 2025',
       responsibilities: [

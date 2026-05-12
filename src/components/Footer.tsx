@@ -90,7 +90,7 @@ export function Footer() {
                   className="text-gray-400 hover:text-white transition-colors text-sm flex items-start gap-2"
                 >
                   <Github className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                  <span>github.com/username</span>
+                  <span>github.com/ZaheerAhmed04</span>
                 </a>
               </li>
               <li>
@@ -101,7 +101,7 @@ export function Footer() {
                   className="text-gray-400 hover:text-white transition-colors text-sm flex items-start gap-2"
                 >
                   <Linkedin className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                  <span>linkedin.com/in/username</span>
+                  <span>linkedin.com/in/zaheer-ahmed-4ab600371</span>
                 </a>
               </li>
             </ul>
@@ -115,7 +115,7 @@ export function Footer() {
               © 2026 Zaheer Ahmed. All rights reserved.
             </p>
             <div className="flex items-center gap-6 text-sm">
-              <a href="\src\Assets\Zaheer's CV.pdf" className="text-gray-400 hover:text-white transition-colors">
+              <a href="/Assets/Zaheer's CV.pdf" className="text-gray-400 hover:text-white transition-colors">
                 Download Resume
               </a>
               <span className="text-gray-600">•</span>
