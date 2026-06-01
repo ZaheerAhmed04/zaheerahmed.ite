@@ -1,4 +1,21 @@
+
+import React from "react";
 import { Mail, Github, Linkedin, MapPin, Phone, Languages, Send } from 'lucide-react';
+import { useForm } from "react-hook-form";
+import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from "../components/ui/form";
+import { Input } from "../components/ui/input";
+import { Textarea } from "../components/ui/textarea";
+import { Button } from "../components/ui/button";
+import emailjs from "@emailjs/browser";
+
+// Initialize EmailJS with the public key (if provided)
+if (import.meta.env.VITE_EMAILJS_PUBLIC_KEY) {
+  try {
+    emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
+  } catch (e) {
+    // ignore init errors in environments where import.meta.env may be undefined
+  }
+}
 
 export function Contact() {
   return (
@@ -119,35 +136,8 @@ export function Contact() {
 
           {/* Quick Message Section */}
           <div>
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Areas of Interest</h2>
-            <div className="bg-gray-50 border border-gray-200 rounded-lg p-6">
-              <p className="text-base text-gray-700 mb-4">
-                I'm particularly interested in opportunities related to:
-              </p>
-              <ul className="space-y-3">
-                <li className="flex items-start gap-2">
-                  <Send className="w-4 h-4 text-blue-600 mt-1 flex-shrink-0" />
-                  <span className="text-base text-gray-700">Web Application Security & Penetration Testing</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <Send className="w-4 h-4 text-blue-600 mt-1 flex-shrink-0" />
-                  <span className="text-base text-gray-700">Secure Full-Stack Development Roles</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <Send className="w-4 h-4 text-blue-600 mt-1 flex-shrink-0" />
-                  <span className="text-base text-gray-700">Cybersecurity Internships & Training Programs</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <Send className="w-4 h-4 text-blue-600 mt-1 flex-shrink-0" />
-                  <span className="text-base text-gray-700">Collaborative Projects on Security Tools</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <Send className="w-4 h-4 text-blue-600 mt-1 flex-shrink-0" />
-                  <span className="text-base text-gray-700">Networking & Security Operations</span>
-                </li>
-              </ul>
-            </div>
-
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">Contact Form</h2>
+            <ContactForm />
             <div className="mt-6 bg-blue-50 border border-blue-200 rounded-lg p-4">
               <p className="text-gray-700 text-sm">
                 <span className="font-medium">Response Time:</span> I typically respond to professional inquiries within 24-48 hours.
@@ -176,5 +166,152 @@ export function Contact() {
         </div>
       </div>
     </div>
+  );
+}
+
+// Only one ContactForm definition, with proper typing
+function ContactForm() {
+  const form = useForm({
+    defaultValues: {
+      name: "",
+      email: "",
+      message: "",
+    },
+  });
+  const [loading, setLoading] = React.useState(false);
+  const [success, setSuccess] = React.useState("");
+  const [error, setError] = React.useState("");
+  const [sendSms, setSendSms] = React.useState(false);
+
+  const onSubmit = async (data: any) => {
+    setLoading(true);
+    setSuccess("");
+    setError("");
+    
+    try {
+      // Validate EmailJS credentials are configured
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+      if (!serviceId || serviceId === "service_xxx" || !templateId || templateId === "template_xxx" || !publicKey || publicKey === "public_xxx") {
+        throw new Error(
+          "Email service not configured. Contact the website owner to set up EmailJS credentials.\n\n" +
+          "Owner: Please configure EmailJS:\n" +
+          "1. Sign up at emailjs.com\n" +
+          "2. Create a service and template\n" +
+          "3. Add credentials to .env file"
+        );
+      }
+
+      // Send email via EmailJS
+      try {
+        await emailjs.send(serviceId, templateId, {
+          from_name: data.name || "Website Visitor",
+          from_email: data.email,
+          message: data.message,
+          reply_to: data.email,
+        }, publicKey);
+      } catch (emailErr: any) {
+        console.error("EmailJS error:", emailErr);
+        throw new Error(
+          `Failed to send email: ${emailErr.text || emailErr.message || "Unknown error"}`
+        );
+      }
+
+      // Send SMS notification to owner if checkbox is checked
+      if (sendSms) {
+        try {
+          const smsRes = await fetch("http://localhost:4000/send-sms-to-owner", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              name: data.name,
+              email: data.email,
+              message: data.message,
+            }),
+          });
+          
+          if (!smsRes.ok) {
+            console.warn(`SMS notification returned status ${smsRes.status}`);
+          }
+        } catch (smsErr: any) {
+          console.warn("SMS notification unavailable (server may be offline):", smsErr.message);
+          // Don't fail the entire request if SMS fails - email is the primary channel
+        }
+      }
+
+      setSuccess("✓ Message sent successfully! I will contact you soon.");
+      form.reset();
+      setSendSms(false);
+    } catch (err: any) {
+      console.error("Form submission error:", err);
+      setError(err.message || "Failed to send message. Please try again later.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+        <FormField
+          name="name"
+          render={({ field }: { field: any }) => (
+            <FormItem>
+              <FormLabel>Name</FormLabel>
+              <FormControl>
+                <Input placeholder="Your Name" {...field} required />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          name="email"
+          render={({ field }: { field: any }) => (
+            <FormItem>
+              <FormLabel>Email</FormLabel>
+              <FormControl>
+                <Input type="email" placeholder="you@email.com" {...field} required />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          name="message"
+          render={({ field }: { field: any }) => (
+            <FormItem>
+              <FormLabel>Message</FormLabel>
+              <FormControl>
+                <Textarea rows={5} placeholder="How can I help you?" {...field} required />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <div className="flex items-center gap-2">
+          <input
+            type="checkbox"
+            id="sendSms"
+            checked={sendSms}
+            onChange={(e) => setSendSms(e.target.checked)}
+            className="w-4 h-4 text-blue-600 rounded cursor-pointer"
+          />
+          <label htmlFor="sendSms" className="text-sm text-gray-700 cursor-pointer">
+            Also notify me via SMS (+91 9103078148)
+          </label>
+        </div>
+        <Button type="submit" disabled={loading} className="w-full">
+          {loading ? "Sending..." : "Send Message"}
+        </Button>
+        {success && <p className="text-green-600 text-sm">{success}</p>}
+        {error && <p className="text-red-600 text-sm">{error}</p>}
+        <div className="text-xs text-gray-500 mt-2">
+          This form will send your message to zaheerahmed.ite@gmail.com. For SMS/WhatsApp, see instructions below.
+        </div>
+      </form>
+    </Form>
   );
 }
