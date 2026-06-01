@@ -94,4 +94,27 @@ Feel free to clone or reuse any ideas that help your own web development growth!
   Run `npm i` to install the dependencies.
 
   Run `npm run dev` to start the development server.
-  
+
+  ## Environment Variables
+
+  Create a local `.env` file from `.env.example` and fill in your EmailJS and Twilio values.
+
+  For deployment, set the same variables in your hosting platform's environment settings.
+
+  ### Vercel
+
+  1. Open your Vercel dashboard for this project.
+  2. Go to `Settings` → `Environment Variables`.
+  3. Add these variables with the same names used in the code:
+     - `VITE_EMAILJS_SERVICE_ID`
+     - `VITE_EMAILJS_TEMPLATE_ID`
+     - `VITE_EMAILJS_PUBLIC_KEY`
+     - `TWILIO_ACCOUNT_SID`
+     - `TWILIO_AUTH_TOKEN`
+     - `TWILIO_FROM_NUMBER`
+     - `TWILIO_TO_NUMBER`
+  4. Use the `Production` and `Preview` environments as needed.
+  5. Re-deploy the project after saving.
+
+  Vercel does not use your local `.env` file, so this step is required for the deployed site to work.
+
